@@ -20,6 +20,7 @@ public class Vid25 {
 
         driver.get("https://www.croma.com/");
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
 
         //Done----------------clicking on ham logo
@@ -39,14 +40,14 @@ public class Vid25 {
 
 //Done------------------ search with product id and click it
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement product = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='316060']")));
+        WebElement product = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='317872']")));
         if (product.isDisplayed()) {
             product.click();
             System.out.println("Product id is present TEST CASE PASSED 2");
         } else {
             System.out.println("Product id is not present");
         }
-        //Done------------------ Switch to the new tab
+//Done------------------ Switch to the new tab
         ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs.get(1)); // Switch to second taba
         System.out.println("Switched to new tab: " + driver.getTitle());

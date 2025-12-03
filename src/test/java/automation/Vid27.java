@@ -13,7 +13,7 @@ import java.util.ArrayList;
 /*
 
 WebDriver Methods :
-        1.  get method
+1.  get method
 2. conditional method
 3. browser method
 4 . navigational method
@@ -62,33 +62,34 @@ public class Vid27 {
 
         //6. multiple window (getWindowHandles())
         driver.get("https://www.croma.com/");
-        System.out.println("Croma2 id = "+driver.getWindowHandle());
+        System.out.println("Croma2 id = " + driver.getWindowHandle());
 
-        ArrayList<String> windowids=new ArrayList<String>(driver.getWindowHandles());
-        for(int i=0;i<windowids.size();i++){
-            System.out.println(i+" = "+windowids.get(i));
+        ArrayList<String> windowids = new ArrayList<String>(driver.getWindowHandles());
+        for (int i = 0; i < windowids.size(); i++) {
+            System.out.println(i + " = " + windowids.get(i));
         }
+
+
         //--------------------------------------------------------------------
         //1. isDisplayed() (have used '/child::img' to locate img tag)
-        boolean logo=driver.findElement(By.xpath("//a[@class=\"logo custom-s-logo croma-desktop-logo\" and @data-testid=\"Logo\"]/child::img")).isDisplayed();
+        boolean logo = driver.findElement(By.xpath("//a[@class=\"logo custom-s-logo croma-desktop-logo\" and @data-testid=\"Logo\"]/child::img")).isDisplayed();
 
-        if(logo){
+        if (logo) {
             System.out.println("logo is displayed");
-        }else{
+        } else {
             System.out.println("logo is not displayed");
         }
 
-//2. isSelected()
-
+        //2. isSelected()
         driver.findElement(By.xpath("//a[@class=\"user-link\"]")).click();
 
-        WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
-        boolean popup=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class=\"card pd-100 desktop-modal-otp\"]"))).isDisplayed();
-        if(popup){
-            boolean checkbox=driver.findElement(By.xpath("//input[@type=\"checkbox\" and @id=\"rememberMe\"]")).isSelected();
-            if(checkbox){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        boolean popup = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class=\"card pd-100 desktop-modal-otp\"]"))).isDisplayed();
+        if (popup) {
+            boolean checkbox = driver.findElement(By.xpath("//input[@type=\"checkbox\" and @id=\"rememberMe\"]")).isSelected();
+            if (checkbox) {
                 System.out.println("check box is selected");
-            }else{
+            } else {
                 System.out.println("check box is not selected");
             }
         }
@@ -96,19 +97,19 @@ public class Vid27 {
         driver.findElement(By.xpath("//span[@class=\"check\"]")).click();
 
         //now checking if it is showing as selected or not
-        if(driver.findElement(By.xpath("//input[@type=\"checkbox\" and @id=\"rememberMe\"]")).isSelected()){
+        if (driver.findElement(By.xpath("//input[@type=\"checkbox\" and @id=\"rememberMe\"]")).isSelected()) {
             System.out.print("check box is selected");
-        }else{
+        } else {
             System.out.println("check box is not selected");
         }
 
 
         //3.isEnabled()
 
-        boolean searchbar= driver.findElement(By.xpath("//input[@id=\"searchV2\" and @name=\"search\"]")).isEnabled();
-        if(searchbar){
+        boolean searchbar = driver.findElement(By.xpath("//input[@id=\"searchV2\" and @name=\"search\"]")).isEnabled();
+        if (searchbar) {
             System.out.println("search is enabled");
-        }else{
+        } else {
             System.out.print("search bar is disabled");
         }
     }
