@@ -8,9 +8,10 @@ import java.util.List;
 import java.util.*;
 
 public class Vid34 {
-    static WebDriver driver;
+    //static WebDriver driver;
     public static void main(String args[]){
-        driver=new ChromeDriver();
+        //driver=new ChromeDriver();
+        /*
         driver.get("https://demo3x.opencartreports.com/admin/index.php?route=common/login");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -61,6 +62,7 @@ public class Vid34 {
         }
 
  */
+        /*
         for (int i = 1; i <= number; i++) {
 
             System.out.println("Checking Page " + i);
@@ -89,5 +91,34 @@ public class Vid34 {
         } catch (NoAlertPresentException e) {
             // No alert found - safe to ignore
         }
-    }
+
+         */
+        WebDriver driver=new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://testautomationpractice.blogspot.com/?_sm_au_=iVV6q22s63rZTWr4M7BKNK07qH22M");
+
+        List<WebElement> pagecount=driver.findElements(By.xpath("//ul[@class=\"pagination\"]//li"));
+        System.out.println("Total number of page is "+pagecount.size()); //4
+
+        for (int i=1;i<=pagecount.size();i++){
+            driver.findElement(By.xpath("//ul[@class=\"pagination\"]//li//a[text()='"+i+"']")).click();
+
+            List<WebElement> rowCount=driver.findElements(By.xpath("//table[@id=\"productTable\"]//tr"));
+            System.out.println("Page "+i+" have "+rowCount.size()+" rows");
+
+            try {
+                WebElement str = driver.findElement(By.xpath("//table[@id=\"productTable\"]//tr//td[text()='Streaming Device']"));
+                if (str.isDisplayed()) {
+                    System.out.println("Name: " + str.getText() + " is displayed on page no. " + i);
+                }
+            }
+            catch (Exception e){
+                //System.out.println(e);
+            }
+
+            for(int j=1;j<rowCount.size();j++){
+                driver.findElement(By.xpath("(//table[@id=\"productTable\"]//tr//td//input[@type=\"checkbox\"])["+j+"]")).click();
+            }
+        }
+        }
 }
